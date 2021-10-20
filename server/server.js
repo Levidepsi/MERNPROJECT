@@ -4,6 +4,7 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import apiRoute from './usersRoute/productRoutes.js'
 import { notFound, errorHandler } from './middleware/errorMiddleware.js'
+import orderRoutes from './usersRoute/orderRoutes.js'
 
 import usersRoute from './usersRoute/usersRouter.js'
 
@@ -30,6 +31,9 @@ app.use(cors())
 // ROutes
 app.use('/', apiRoute)
 app.use('/api/users', usersRoute)
+app.use('/api/orders', orderRoutes)
+
+app.get('/api/config/paypal', (req, res) => res.send(process.env.PAYPAL_CLIENT_ID))
 
 
 app.use(notFound)

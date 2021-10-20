@@ -1,11 +1,11 @@
 import mongoose from 'mongoose'
-import bcrypt from 'bcryptjs'
 
 
 const orderModel = mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true
+        required: true,
+        ref: 'User'
     },
     orderItems: [
         {
@@ -21,9 +21,9 @@ const orderModel = mongoose.Schema({
         }
     ],
     shippingAddress: {
-        adddress: { type: String, required: true },
+        address: { type: String, required: true },
         city: { type: String, required: true },
-        postLCode: { type: String, required: true },
+        postalCode: { type: String, required: true },
         country: { type: String, required: true }
     },
     paymentMethod: {
@@ -74,21 +74,6 @@ const orderModel = mongoose.Schema({
         type: Date
     }
 }, { timestamps: true })
-
-
-// userModel.methods.matchPassword = async function(enteredPassword) {
-//     return await bcrypt.compare(enteredPassword, this.password)
-// }
-
-// userModel.pre('save', async function(next) {
-//     if(!this.isModified('password')) {
-//         next()
-//     }
-
-//     const salt = await bcrypt.genSaltSync(10)
-//     this.password = await bcrypt.hash(this.password, salt)
-
-// })
 
 const Order = mongoose.model('Order', orderModel)
 
