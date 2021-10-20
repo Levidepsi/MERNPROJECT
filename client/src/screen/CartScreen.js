@@ -29,7 +29,6 @@ const CartScreen = ({match, location, history}) => {
         history.push('/login?redirect=shipping')
     }
 
-    console.log(qty);
     return(
         <Row>
             <Col md={8}>
