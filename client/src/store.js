@@ -1,14 +1,40 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-import  {productListReducer, productDetailsReducer, productDeleteReducer} from './reducers/productReducers'
 import { composeWithDevTools } from 'redux-devtools-extension'
+import  {
+    productListReducer, 
+    productDetailsReducer, 
+    productDeleteReducer, 
+    productCreateReducer, 
+    productUpdateReducer, 
+    productCreateReviewReducer, 
+    productTopRatedReducer}
+    from './reducers/productReducers'
 import { cartReducer } from './reducers/cartReducers'
-import { usersLoginReducer, userRegisterReducer, userDetailsReducer, userUpdateProfileReducer, userListReducer, userDeleteReducer, userUpdateReducer } from './reducers/userReducers'
-import { orderCreateReducer, orderDetailsReducer, orderPayReducer, orderListReducer } from './reducers/orderReducers'
+import { 
+    usersLoginReducer, 
+    userRegisterReducer, 
+    userDetailsReducer, 
+    userUpdateProfileReducer, 
+    userListReducer, 
+    userDeleteReducer, 
+    userUpdateReducer } from './reducers/userReducers'
+import { 
+    orderCreateReducer, 
+    orderDetailsReducer, 
+    orderPayReducer, 
+    orderListMyReducer, 
+    orderListReducer, 
+    orderDeliverReducer } from './reducers/orderReducers'
 
 const reducer = combineReducers({
     productList : productListReducer,
-    productDetail : productDetailsReducer,
+    productDetails : productDetailsReducer,
+    productDelete : productDeleteReducer,
+    productCreate : productCreateReducer,
+    productUpdates: productUpdateReducer,
+    productReview : productCreateReviewReducer,
+    productTopRated : productTopRatedReducer,
     cart : cartReducer,
     userLogin: usersLoginReducer,
     userRegister : userRegisterReducer,
@@ -16,12 +42,13 @@ const reducer = combineReducers({
     userUpdateProfile: userUpdateProfileReducer,
     userList: userListReducer,
     userDelete: userDeleteReducer,
-    productDelete : productDeleteReducer,
     userUpdate: userUpdateReducer,
     orderCreate: orderCreateReducer,
     orderDetails: orderDetailsReducer,
     orderPay: orderPayReducer,
-    orderMyList: orderListReducer
+    orderDeliver : orderDeliverReducer,
+    orderMyList: orderListMyReducer,
+    orderList : orderListReducer
    
 })
 
